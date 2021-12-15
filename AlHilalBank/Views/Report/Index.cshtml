@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Report>
+@{
+    ViewData["Title"] = "Report Page";
+}
+<h4>Interface for uploading data to a database</h4>
+<form asp-controller="Report" asp-action="Index" method="post" enctype="multipart/form-data">
+    
+    
+    
+    <hr />
+    <input type="file" name="file" />
+    <hr />
+  
+    <button  type="submit" class="btn btn-primary">Sumbit</button>
+</form>
+<hr>
+
+<h4>The data you uploaded</h4>
+<hr/>
+@if (Model.Count() > 0)
+{
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>RNUM</th>
+                <th>REPORT_NUM</th>
+                <th>CREADITOR_ID</th>
+                <th>GL_NUMBER </th>
+                <th>DESC</th>
+                <th>RESIDENT_CODE</th>
+                <th>SECTOR_ECO </th>
+                <th>CURR_CODE </th>
+                <th>AMOUNT_LCY</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Report report in Model)
+            {
+                <tr>
+                    <td>@report.RNUM</td>
+                    <td>@report.REPORT_DATE</td>
+                    <td>@report.CREADITOR_ID</td>
+                    <td>@report.GL_NUMBER</td>
+                    <td>@report.DESC</td>
+                    <td>@report.RESIDENT_CODE</td>
+                    <td>@report.SECTOR_ECO</td>
+                    <td>@report.CURR_CODE</td>
+                    <td>@report.AMOUNT_LCY</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+}
